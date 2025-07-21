@@ -1,4 +1,3 @@
-import React from "react";
 import "./About.css"; // custom styles from your CSS below
 
 const About = () => {
