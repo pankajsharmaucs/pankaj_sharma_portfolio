@@ -7,8 +7,14 @@ import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    document.title = "Pankaj Sharma - Portfolio";
+  }, []);
+
   return (
     <Router>
       <div className="w-100" style={{ width: '100vw', overflowX: 'hidden' }}>
