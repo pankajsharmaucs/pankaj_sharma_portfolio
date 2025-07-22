@@ -1,0 +1,1 @@
+ssh -i /d/pankaj/aws/key_1.pem ubuntu@13.200.243.91
