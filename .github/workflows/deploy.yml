@@ -19,7 +19,18 @@ jobs:
       - name: Build Vite app
         run: npm run build
 
-      - name: Upload build to EC2 (sync dist folder)
+      - name: Cleanup old dist folder on EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Cleaning old dist files on EC2..."
+            rm -rf ~/vite-app/dist/*
+            mkdir -p ~/vite-app/dist
+
+      - name: Upload new dist to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -28,11 +39,12 @@ jobs:
           source: "dist/**"
           target: "~/vite-app/dist"
 
-      - name: Restart nginx (if needed)
+      - name: Reload nginx on EC2
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            echo "Reloading Nginx..."
             sudo systemctl reload nginx
