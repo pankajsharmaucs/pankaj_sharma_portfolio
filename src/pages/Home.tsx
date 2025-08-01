@@ -12,7 +12,7 @@ const Home = () => (
         ></iframe>
       </div>
       <h1 className="display-4 fw-bold">Hi, I'm Pankaj Sharma</h1>
-      <p className="lead mt-3">Full Stack Developer | MERN Stack | TypeScript | AWS | GoLang | MYSQL | MONGO DB | PHP | Bootstrap | Tailwind CSS 4 </p>
+      <p className="lead mt-3">Full Stack Developer | MERN Stack | TypeScript | AWS | GoLang | MYSQL | MONGO DB | PHP | Bootstrap | Tailwind CSS  </p>
     </div>
   </section>
 );
